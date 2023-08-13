@@ -1,13 +1,15 @@
-# recSysSA
+# recSysSoA
 My team project on RecSys 
 
-Here schould be ML System Design + Integration with other parts of project(FrontEnd, DataEngeniring, simple BackEnd) 
+Here should be ML System Design + Integration with other parts of project(FrontEnd, DataEngeneering, simple BackEnd) 
 
 Objective & Key Results:
 * Objectives:
-  - Create RecSys to give customers recomendation for items they could need
-  - Create Simle Backend to connect ML and our project 
-  - Create Simle Frontend to show how algorithm is working
+
+  Create an app for marketplace. Architecture includes:
+    - RecSys to give customers recommendations for items they could need
+    - Simple Backend to connect ML and our project
+    - Simle Frontend to show how algorithm is working
   
 * Key Results:
   - [ ] Documnetation
