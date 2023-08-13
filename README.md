@@ -12,8 +12,10 @@ Objective & Key Results:
     - Simle Frontend to show how algorithm is working
   
 * Key Results:
-provide examples
-
+    - Model accuracy #ToDo: Specify
+    - Retention  #ToDo: Specify
+    - LTV/GMV per User/ARPPU/AVG #ToDo: Specify
+    - Relaiability/ Service agreement 
 MlSystemDesign:
 * Tools:clearml/mlflow
 * Realisation:
