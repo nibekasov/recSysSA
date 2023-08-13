@@ -1,0 +1,14 @@
+  - [ ] Documnetation
+    - Checkpoint: 19.08.2023
+  - [ ] C4 architecture notation
+  - [ ] EDA & preprocessing
+    - Checkpoint: 26.08.2023
+  - [ ] JupyterNootbook research + Airflow realisation
+  - [ ] Baseline & realisation
+    - Checkpoint: 02.09.2023
+  - [ ] The optimal metric for evaluating the solution was analyzed, the baseline and the target solution were evaluated, and the solution parameters improving the metrics were selected
+  - [ ] All components from the product architecture for operation of the store application are lifted
+    - Checkpoint: 09.09.2023
+  - [ ] The solution is implemented on airflow and clearml/mlflow/flask
+  - [ ] Solution provided to the customer: Product architecture, model scoring, description of features and EDA results
+    - Checkpoint: 16.09.2023
