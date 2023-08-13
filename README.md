@@ -5,6 +5,10 @@ Here schould be ML System Design + Integration with other parts of project(Front
 
 Objective & Key Results:
 * Objectives:
+  - Create RecSys to give customers recomendation for items they could need
+  - Create Simle Backend to connect ML and our project 
+  - Create Simle Frontend to show how algorithm is working
+  
 * Key Results:
   - [ ] Documnetation
     - [ ] Checkpoint: 19.08.2023
@@ -20,7 +24,6 @@ Objective & Key Results:
   - [ ] The solution is implemented on airflow and clearml/mlflow/flask
   - [ ] Solution provided to the customer: Product architecture, model scoring, description of features and EDA results
     - [ ] Checkpoint: 16.09.2023
-
 
 MlSystemDesign:
 * Tools:clearml/mlflow
