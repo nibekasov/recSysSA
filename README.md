@@ -7,14 +7,19 @@ Objective & Key Results:
 * Objectives:
 * Key Results:
   - [ ] Documnetation
+    - [ ] 
   - [ ] C4 architecture notation
   - [ ] EDA & preprocessing
+    - [ ] 
   - [ ] JupyterNootbook research + Airflow realisation
-  - [ ] Baseline & realisation:
+  - [ ] Baseline & realisation
+    - [ ] 
   - [ ] The optimal metric for evaluating the solution was analyzed, the baseline and the target solution were evaluated, and the solution parameters improving the metrics were selected
   - [ ] All components from the product architecture for operation of the store application are lifted
+    - [ ] 
   - [ ] The solution is implemented on airflow and clearml/mlflow/flask
   - [ ] Solution provided to the customer: Product architecture, model scoring, description of features and EDA results
+    - [ ] 
 
 
 MlSystemDesign:
