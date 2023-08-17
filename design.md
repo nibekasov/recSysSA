@@ -18,8 +18,17 @@
 ### 1. Objectives and prerequisites 
 #### 1.1. Why go into product development?  
 
-- Business objective `Product Owner'.  
-- Why will it become better than it is now from using ML `Product Owner` & `Data Scientist`.  
+- Business objective : Увеличить продажи на сайте и в приложении маркетплейса.
+
+
+  Сопутствующие вопросы:
+   - Определить четко метрики, которые хотим наращивать: среднее количество покупок пользователя со страницы рекомендаций, средний чек пользователя при покупке со страницы рекомендаций, LTV пользователя ?
+   - На сколько ожидаем увеличение метрик/метрики?
+   - Решаем задачу только для авторизованных пользователей? На сайте вб (без входа в аккаунт) не увидела раздела "Возможно, вам понравится"... 
+    
+- Why will it become better than it is now from using ML : персонализированная рекомендательная система будет чаще выдавать пользователю интересующие (или потенциально интересующие) его товары. Более частые релевантные рекомендации -> более частые покупки.
+
+  
 - What we will consider the success of the iteration from the `Product Owner` business perspective  
 
 #### 1.2 Business Requirements and Constraints  
