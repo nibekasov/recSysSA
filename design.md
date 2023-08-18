@@ -9,7 +9,7 @@
     
 > ## Terms and Explanations
 > - Iteration is all the work that is done before the next pilot is started  
-> - BT - Business Requirements 
+> - BR - Business Requirements 
 > - EDA - Exploratory Data Analysis  
 > - `Product Owner`, `Data Scientist` - the roles that populate the respective sections 
 > - In this template, the `Data Scientist` role combines the competencies of the classic `Data Scientist` role with a focus on research and the `ML Engineer` & `ML Ops` roles with a focus on productization of models
@@ -18,7 +18,7 @@
 ### 1. Objectives and prerequisites 
 #### 1.1. Why go into product development?  
 
-- Business objective : Построение рекомендательной системы для персонализированной выдачи пользователю товаров (из каталога сайта). Как следствие, ожидаем улучшение взаимодействия пользователя с сервисом, которое выражается в количестве покупок товаров из категории "Возможно, вам понравится".
+- Business objective : Building a recommendation system for personalized recommendations of goods from the site catalog to the user. As a result, we expect an improvement in user experience during the interaction with the service, which is expressed in the number of purchases of goods from the category "You may like it".
 
 
   Сопутствующие вопросы:
@@ -26,32 +26,31 @@
    - На сколько ожидаем увеличение бизнес-метрики? В течение какого периода считаем метрику? Кажется, что 1-2 месяца будет достаточно
    - Решаем задачу только для авторизованных пользователей? На сайте вб (без входа в аккаунт) не увидела раздела "Возможно, вам понравится"... 
     
-- Why will it become better than it is now from using ML : в связи с большим количеством товаров в каталоге необходимо применение алгоритма ранжирования. Имеющиеся о действиях пользователей данные позволяют построить персонализированную рекомендательную систему. RecSys будет чаще выдавать пользователю интересующие (или потенциально интересующие) его товары, тем самым увеличивается удовлетворенность пользователя.
+- Why will it become better than it is now from using ML : Due to the large number of products in the catalog, it is necessary to use a ranking algorithm. Large amount of data about user actions and items is available and allows to build a personalized recommendation system. RecSys will more often offer the user interesting (or potentially interesting)  products, thereby increasing user satisfaction.
 
   
 - What we will consider the success of the iteration from the business perspective:
-  1. Значение метрики качества ранжирования с использованием новой  модели > значение метрики с использованием старой. Если неизвестны ответы старой модели, то оцениваем качество на тестовой выборке исторических данных. Если известны ответы старой модели, то оцениваем качество моделей между собой
-  2. Значение целевой метрики (см. вопросы выше) после внедрения выше на X% (оценить возможный эффект). Для оценки бизнес-эффекта рекомендуется проведение АБ, не предусмотрено в рамках пилота.
+  1. The value of the ranking metric using the new model > the value of the metric using the old one. If the answers of the old model are unknown, then we evaluate the quality on a test sample of historical data. If the answers of the old model are known, then we evaluate the quality of the models among themselves.
+  2. The value of the target metric after implementation of the model is higher by X%. To assess the business effect, it is recommended to conduct an A/B controlled experiment, which is not provided for in the pilot.
+
 
   Сопутствующие вопросы:
     - Выбрать метрику. Видимо, что-то из MAP@k, AP@k, MRR, NDCG. Обосновать выбор метрики.
     - Упомянуть про барьерные метрики и ограничения на их изменения в ходе периода оценки успешности проекта
+    - Оценить возможные приросты метрик.
       
 #### 1.2 Business Requirements and Constraints  
 
-- A brief description of BT and links to detailed business requirements documents : Машинное обучение работает по принципу запрос-ответ. Из базы системы поступает запрос с данными об истории действий пользователя, товарах в каталоге (признаки для предикта). В ответ система выдает ответ с номерами айди товаров, которые релевантны для пользователя. Список товаров, их изображение и описание отображается на сайте пользователя.   
+- A brief description of BR and links to detailed business requirements documents : Machine learning model works due to the "request-response" principle. A request is received from the system database with data about the history of user actions, products in the catalog (features). In response, the system issues a response with the ID numbers of the products that are relevant to the user. The list of products, their image and description are displayed on the user's website.
 
-- `Product Owner' business constraints : Запрос-ответ должен происходить не более X миллисекунд.
+- `Product Owner' business constraints : "request-response" process must must take not more than X ms.
   
-- What we expect from a particular iteration : Построение самой RecSys со всеми этапами работы с данными, валидацией модели. Реализация взаимодействия пользователя с сервисом посредством веб интерфейса.
+- What we expect from a particular iteration : Building the RecSys itself with all stages of working with data, rank and rerank, model validation due to the pipeline. Implementation of user interaction with the service via the web interface.
   
 - Pilot business process description as far as possible - how exactly will we use the model in an existing business process : Имеем данные с описанием товаров, отзывы покупателей на товары, исторические данные покупок пользователя. Составляем эмбеддинги: имен товаров, характеристик + отзывов товаров, действиях каждого пользователя (просмотры, покупки). Формируем из базы данных список товаров, для которых мы будем искать похожие. Для каждого товара из данного списка рассчитываем на основании усредненных эмбеддингов топ X ближайших товаров (близость рассчитываем косинусным расстоянием) из всего каталога. id товара, результат топ X для каждого этого товара сохраняется в хранилище S3.
   Дополнить... .
 
 - What do we consider a successful pilot? Success criteria and possible ways to develop the project : успешная модель будет корректно отображать рекомендации, которые потенциально заинтересуют клиента.
-
-  Сопутствующие вопросы:
-   - Перечитать еще раз. Пришлось из-за вылетевшего ноута писать 2 раза, мб что-то упустила.
 
 
 #### 1.3. What is included in the project/iteration scope, what is not included   
