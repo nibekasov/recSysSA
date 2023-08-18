@@ -94,10 +94,22 @@
 
 #### 2.3 Stages of solving the `Data Scientist' problem  
 
-- For each stage **from the EDA results**, describe - **separately for the baseline** and **separately for the main MVP** - everything about the data and the solution technique as concretely as possible. We outline the necessary inputs, the expected solution technique and what we expect to get in order to move on to the next step.  
-- As a rule, a detailed and structured filling of the `2.3` section is only possible **based on the results of EDA**.  
-- If the description in the design doc is **template** - i.e. it can be copied and applied to different products, it is **incorrect**. The design doc should show a solution diagram for the specific problem posed in part 1.  
-    
+> - For each stage **from the EDA results**, describe - **separately for the baseline** and **separately for the main MVP** - everything about the data and the solution technique as concretely as possible. We outline the necessary inputs, the expected solution technique and what we expect to get in order to move on to the next step.  
+> - As a rule, a detailed and structured filling of the `2.3` section is only possible **based on the results of EDA**.  
+> - If the description in the design doc is **template** - i.e. it can be copied and applied to different products, it is **incorrect**. The design doc should show a solution diagram for the specific problem posed in part 1.  
+
+- Stage 1 - Collection the data, preparing and analysis.
+
+Download transaction data from the given file. We load them into Jupiter's notebook. When selecting, we check the completeness of the data, choose the strategy about working with outliers and missing data, check the data types.
+Sourse of the metadata about items - **TBD**
+
+Target variable
+| Data name  | Is there any data in the company (if yes, the name of the source/storefronts) | Required resource to get data (what roles are needed) | Has the data quality been checked (yes, no) |
+| ------------- | ------------- | ------------- | ------------- |
+| The position of the item in the recommendation list (or fact of the presence of the item in the recommendation list) | TBD (-)  | DE | TBD (-) |
+
+Продолжу...
+
 > Examples of stages:  
 > - Stage 2 - Prepare predictive models  
 > - Step 3 - Interpretation of models (as agreed with the customer)  
