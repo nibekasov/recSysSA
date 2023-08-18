@@ -1,5 +1,5 @@
 #Forked from https://github.com/IrinaGoloshchapova/ml_system_design_doc_ru
-# ML System Design Doc - [RU]
+# ML System Design Doc - [ENG]
 ## ML System Design Doc - \<Product\> \<MVP or Production System\> \<Number\>
 
 * ML System Design Doc template from [Reliable ML](https://t.me/reliable_ml)* telegram channel.   
