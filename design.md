@@ -81,7 +81,8 @@
 
 #### 2.1. Problem Statement  
 
-- What we do from a technical point of view: recommendation system, anomaly search, prediction, optimization, etc. `Data Scientist  
+- What we do from a technical point of view: recommendation system, anomaly search, prediction, optimization, etc. `Data Scientist
+- recommendation system 
 #### 2.2. Solution flowchart  
 
 - Flowchart for the baseline and main MVP with key stages of the problem solution: data preparation, building predictive models, optimization, testing, technical debt closure, pilot preparation, other. `Data Scientist`.  
@@ -161,6 +162,7 @@ Implementation `for production systems, if required'
 - Why the final choice is better than other `Data Scientist` alternatives#### 4.3.System performance requirements- SLA, throughput and latency of `Data Scientist`  
   
 #### 4.4.System Security- Potential vulnerability of the `Data Scientist` system  
+
   
 #### 4.5.Data Security   
   
@@ -172,12 +174,21 @@ While optimizing business metrics is important, it's also essential to maintain 
   
 #### 4.6. Costs  
   
-- Estimated costs of running the system per month `Data Scientist`  
+- Estimated costs of running the system per month `Data Scientist`
+- VC: Capacity of Data Scientist to implement model + capacity of data engenieers to provide relible ETL process via manual checking, alerting and monitoring; capacity of backend and probably frontend engeniers to integrate parts of business
+- FX: increased cost on servers to make solution stable
+- Extra risks ( donno how to implement)
+  
   
 #### 4.5. Integration points  
   
-- Description of interaction between services (API methods, etc.) `Data Scientist`.  
-  
+- Description of interaction between services (API methods, etc.) `Data Scientist`.
+- 1. Data is going from our data base, where simple etl is made with help of Airflow
+- 2. Then model is trained again using (?) Mlflow(?)
+- 3. Resultat of our model is going to data base( or s3 where results is stored) and info is pushed to backend
+- 4. Backend is sending info to frontend, using Fast Api/Flask
+- 5. Info from the cite is send to backend and data bases
+- 6. Analyst analyse the effeect of our new feature via ab test seted before or other analytical tools  
 #### 4.6. Risks  
   
 - Description of risks and uncertainties that are worth foreseeing `Data Scientist`
