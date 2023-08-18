@@ -56,10 +56,23 @@
 
 #### 1.3. What is included in the project/iteration scope, what is not included   
 
-- What BTs are subscribed to be closed in this iteration of `Data Scientist`.   
-- What will not be closed by `Data Scientist`.  
-- Description of the result in terms of code quality and reproducibility of the `Data Scientist` solution  
-- Description of the planned technical debt (what we leave for further productization) `Data Scientist`.  
+- What BRs are subscribed to be closed in this iteration of `Data Scientist`.
+  1. Trained model 
+  2. Front and back end of the cite
+  3. Model connectivity with back and front end + connectivity with Data Base( Postgre for simplicity) 
+  4. Reproductible code ( integrated in docker)
+- What will not be closed by `Data Scientist`.
+  1. Data engineering pipeline (ETL/ELT)
+  2. SRE ( recomendentions schould be available 99.9% of time not to lose extra  
+  3. Effective backend maybe maid on more effective libraries(like fast api)/software development(programming) languages like golang
+- Description of the result in terms of code quality and reproducibility of the `Data Scientist` solution
+  1. Documentation for every function, class method, class object; use of dockstring and linters is obligatory
+  2. Additional separation of part of the code in ipynb files
+  3. Additional documentation about connectivity of files
+  4. Separated files as main, eda, some other modules that could be usefull
+  5. Integration with docker, so you could set up solution really quick
+- Description of the planned technical debt (what we leave for further productization) `Data Scientist`.
+  1. ???
 
 #### 1.4.Solution prerequisites- Description of all common solution assumptions used in the system - with justification from the business request: which data blocks we use, forecast horizon, model granularity, etc. ``Data Scientist''  
 
@@ -150,7 +163,11 @@ Implementation `for production systems, if required'
   
 #### 4.5.Data Security   
   
-- Whether there are no breaches of GDPR and other `Data Scientist` laws  
+- Whether there are no breaches of GDPR and other `Data Scientist` laws
+- GDPR Compliance and Data Privacy:
+Building a recommendation system involves collecting and processing user data. To ensure compliance with laws like GDPR (General Data Protection Regulation), it's crucial to handle user data ethically and transparently. This includes obtaining user consent for data collection, providing clear privacy policies, enabling data deletion requests, and ensuring that user data is secure.
+-Ethical and Diversity Considerations:
+While optimizing business metrics is important, it's also essential to maintain ethical considerations. Ensuring that the recommendation system doesn't reinforce biases or lead to filter bubbles is crucial. Diversity and fairness in recommendations should be prioritized.
   
 #### 4.6. Costs  
   
@@ -162,7 +179,12 @@ Implementation `for production systems, if required'
   
 #### 4.6. Risks  
   
-- Description of risks and uncertainties that are worth foreseeing `Data Scientist`   
+- Description of risks and uncertainties that are worth foreseeing `Data Scientist`
+- Model risk
+- Effect on other parts of business
+- Data quality issues
+- No effect on business metrics
+- Infrastructure risk e.g need to give more operation memory for service
 
 > ### Materials for further diving into the topic  
 > - [AWS's ML System Design Doc [EN] template](https://github.com/eugeneyan/ml-design-docs) and [article](https://eugeneyan.com/writing/ml-design-docs/) explaining each section  
