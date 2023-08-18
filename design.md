@@ -50,7 +50,7 @@
 - Pilot business process description as far as possible - how exactly will we use the model in an existing business process : Имеем данные с описанием товаров, отзывы покупателей на товары, исторические данные покупок пользователя. Составляем эмбеддинги: имен товаров, характеристик + отзывов товаров, действиях каждого пользователя (просмотры, покупки). Формируем из базы данных список товаров, для которых мы будем искать похожие. Для каждого товара из данного списка рассчитываем на основании усредненных эмбеддингов топ X ближайших товаров (близость рассчитываем косинусным расстоянием) из всего каталога. id товара, результат топ X для каждого этого товара сохраняется в хранилище S3.
   Дополнить... .
 
-- What do we consider a successful pilot? Success criteria and possible ways to develop the project : успешная модель будет корректно отображать рекомендации, которые потенциально заинтересуют клиента.
+- What do we consider a successful pilot? Success criteria and possible ways to develop the project : A successful model will correctly gives recommendations that are potentially interesting to the client.
 
 
 #### 1.3. What is included in the project/iteration scope, what is not included   
@@ -60,19 +60,22 @@
   2. Front and back end of the cite
   3. Model connectivity with back and front end + connectivity with Data Base( Postgre for simplicity) 
   4. Reproductible code ( integrated in docker)
+     
 - What will not be closed by `Data Scientist`.
   1. Data engineering pipeline (ETL/ELT)
   2. SRE (recommendantions should be available 99.9% of time not to lose extra  
   3. Effective backend maybe made on more effective libraries(like fast api)/software development(programming) languages like golang
-  4. Evaluation of business metrics as the proof of improvements after the implementation of the model  
+  4. Evaluation of business metrics as the proof of improvements after the implementation of the model
+     
 - Description of the result in terms of code quality and reproducibility of the `Data Scientist` solution
   1. Documentation for every function, class method, class object; use of dockstring and linters is obligatory
   2. Additional separation of part of the code in ipynb files
   3. Additional documentation about connectivity of files
   4. Separated files as main, eda, some other modules that could be useful
   5. Integration with docker, so you could set up solution really quick
+     
 - Description of the planned technical debt (what we leave for further productization) `Data Scientist`.
-  1. ???
+  1. We use data about users' actions and items with granularity: userid - itemid - status of the recommendation (was the item recommended to the user and on which position in result list it presented). Predictors ~ actions of users and items' info. Target ~ recommendation.
 
 #### 1.4.Solution prerequisites- Description of all common solution assumptions used in the system - with justification from the business request: which data blocks we use, forecast horizon, model granularity, etc. ``Data Scientist''  
 
