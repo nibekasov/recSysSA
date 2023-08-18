@@ -63,13 +63,14 @@
   4. Reproductible code ( integrated in docker)
 - What will not be closed by `Data Scientist`.
   1. Data engineering pipeline (ETL/ELT)
-  2. SRE ( recomendentions schould be available 99.9% of time not to lose extra  
-  3. Effective backend maybe maid on more effective libraries(like fast api)/software development(programming) languages like golang
+  2. SRE (recommendantions should be available 99.9% of time not to lose extra  
+  3. Effective backend maybe made on more effective libraries(like fast api)/software development(programming) languages like golang
+  4. Evaluation of business metrics as the proof of improvements after the implementation of the model  
 - Description of the result in terms of code quality and reproducibility of the `Data Scientist` solution
   1. Documentation for every function, class method, class object; use of dockstring and linters is obligatory
   2. Additional separation of part of the code in ipynb files
   3. Additional documentation about connectivity of files
-  4. Separated files as main, eda, some other modules that could be usefull
+  4. Separated files as main, eda, some other modules that could be useful
   5. Integration with docker, so you could set up solution really quick
 - Description of the planned technical debt (what we leave for further productization) `Data Scientist`.
   1. ???
