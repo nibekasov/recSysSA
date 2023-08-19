@@ -48,16 +48,14 @@
   
 - What we expect from a particular iteration : Building the RecSys itself with all stages of working with data (from database), rank and rerank stages, model validation due to the pipeline. Implementation of user interaction with the service via the web interface.
   
-- Pilot business process description as far as possible : The user visits the site and logs into his account. After logging into the account, he receives a list of personalized recommendations. Recommendations are made in 2 stages: the primary list of goods is formed only on the basis of user actions; the second stage of rearrangement is made on the basis of meta-information about goods, information about user interactions with goods. The final list of top X recommended products is stored in the storage (like S3?). From this storage, information about the name, images of goods is displayed on the user's page.
+- Pilot business process description as far as possible : The user visits the site and logs into his account. After logging into the account, he receives a list of personalized recommendations. Recommendations are made in 2 stages: the primary list of goods is formed only on the basis of user actions; the second stage of rearrangement is made on the basis of meta-information about goods, information about user interactions with goods. The final list of top X recommended products is stored in the storage. From this storage, information about the name, images of goods is displayed on the user's page.
 
 
-- What do we consider a successful pilot? Success criteria and possible ways to develop the project : A successful model will correctly gives recommendations that are potentially interesting to the client.
+- What do we consider a successful pilot? Success criteria and possible ways to develop the project : A successful model will correctly gives recommendations that are potentially interesting to the client, and the user inteface works correctly.
 
 ---
   Additional questions:
    - Do we need to clearly define barrier metrics and them expected values at this stage?
-
-
 
 ---
 
@@ -67,8 +65,8 @@
 - What BRs are subscribed to be closed in this iteration of `Data Scientist`.
   1. Trained model 
   2. Front and back end of the cite
-  3. Model connectivity with back and front end + connectivity with Data Base( Postgre for simplicity) 
-  4. Reproductible code ( integrated in docker)
+  3. Model connectivity with back and front end + connectivity with Data Base (Postgre for simplicity) 
+  4. Reproductible code (integrated in docker)
      
 - What will not be closed by `Data Scientist`.
   1. Data engineering pipeline (ETL/ELT)
@@ -115,9 +113,16 @@ Sourse of the metadata about items - **TBD**
 Target variable
 | Data name  | Is there any data in the company (if yes, the name of the source/storefronts) | Required resource to get data (what roles are needed) | Has the data quality been checked (yes, no) |
 | ------------- | ------------- | ------------- | ------------- |
-| The position of the item in the recommendation list (or fact of the presence of the item in the recommendation list) | TBD (-)  | DE | TBD (-) |
+| The fact of the interaction of user with the item on website | ab_data.csv  | DE | TBD |
 
-Продолжу...
+
+Features: 
+| Data name  | Is there any data in the company (if yes, the name of the source/storefronts) | Required resource to get data (what roles are needed) | Has the data quality been checked (yes, no) |
+| ------------- | ------------- | ------------- | ------------- |
+| Data about user's actions with items (view, add to cart, buy) | ab_data.csv  | DE | TBD |
+| Name of items | TBD | DE | TDB |
+| Description of items | TBD | DE | TDB |
+| Items reviews | TBD | DE | TDB |
 
 > Examples of stages:  
 > - Stage 2 - Prepare predictive models  
