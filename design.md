@@ -166,26 +166,31 @@ MVP: Jupyter's notebook with fixed split of data.
     - In the case of category wise requirements -- we get results of our fit
 
 2. Two-satged model
-    - Initial ranker and reranker (for example). **TBC**
+    - Initial ranker and reranker (for example).
+   **TBC**
 
 
 - Stage 5 - Checking the results, optimization of MVP model
 
-We determine the quality metrics of the model. Then checking several models. Preferably 5-7, and find the best model through hyperparameters. If, as a result of training, the quality of the model cannot be raised to the baseline level, it is necessary to conduct an additional study of the database for potential features that play an important role in the selection. **TBC** Interpretation of the result and understandings weeknesses of model. Checkimg the significance of model's features.
+We determine the quality metrics of the model. Then checking several models. Preferably 5-7, and find the best model through hyperparameters. If, as a result of training, the quality of the model cannot be raised to the baseline level, it is necessary to conduct an additional study of the database for potential features that play an important role in the selection. Interpretation of the result and understandings weeknesses of model. Checkimg the significance of model's features.
+
+**TBC.** 
 
 MVP: Jupyter notebook with a certain best model and its parameters that meets the stated quality criteria
 
 
 - Stage 6 - Developing backend and frontend of the site
-**TBC**
+
+**TBC.**
 
 
 Step 5. -  baseline deployment according to the business requirements
 
 Deployment according to the business requirements. We prepare the stack according to the customer's requirements, transfer our baseline there and ensure that the model can be executed according to the stated logic. We are setting up integration with the test database, deploying the interface, setting up pipelines, editing the database.
 
-Description of the technique for achieving the set business requirements: **TBC**
-Checking the selected proxy metrics: **TBC**
+Description of the technique for achieving the set business requirements: **TBC.**
+Checking the selected proxy metrics: **TBC.**
+
 MVP: The model works with a test environment with the declared quality according to business requirements.
 
 Part 2 - Pilot
@@ -197,16 +202,16 @@ MVP: Target metrics are defined based on available data and agreed with the busi
 
 
 - Stage 7 - Developing backend and frontend of the site
-  Integration of the RecSys with backend, frontend. Developing reranking process in pipeline.**TBC**
+  Integration of the RecSys with backend, frontend. Developing reranking process in pipeline.**TBC.**
 
 
 - Stage 8 - Integration of the RecSys with backend, frontend. Developing reranking process in pipeline
+
 **TBC**
 
 - Stage 9 - Presentation of the result
 
 Presentation of the system architecture (including description of the main parts), present the results of the conducted EDA, result of the model impementation (including optimal parameters and evaluation metrics)
-
 
 
 > Examples of stages:  
