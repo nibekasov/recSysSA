@@ -64,7 +64,7 @@
 
 - What BRs are subscribed to be closed in this iteration of `Data Scientist`.
   1. Trained model 
-  2. Front and back end of the cite
+  2. Front and back end of the site
   3. Model connectivity with back and front end + connectivity with Data Base (Postgre for simplicity) 
   4. Reproductible code (integrated in docker)
      
@@ -114,7 +114,7 @@
 - Stage 1 - Collection the data, preparing and initial analysis.
 
 Download transaction data from the given file. We load them into Jupiter's notebook. When selecting, we check the completeness of the data, choose the strategy about working with outliers and missing data, check the data types.
-Sourse of the metadata about items - **TBD**
+Source of the metadata about items - **TBD**
 
 Target variable
 | Data name  | Is there any data in the company (if yes, the name of the source/storefronts) | Required resource to get data (what roles are needed) | Has the data quality been checked (yes, no) |
@@ -146,22 +146,49 @@ Description and formation of samples for trainig, testing and validation. Select
 
 MVP: Jupyter's notebook with fixed split of data.
 
-- Stage 4 - Initialization of baseline model and fit method
+- Stage 4 - Initialization of baseline model, and MVP model
 
-The pipeline will have two methods in the end: fit() and recommend()
+1. Baseline uses a simple heuristic and recommends the most popular products
 
-The logic of `fit()` as follow:
-- Initiate recommendation based on amount of purchases from all observations;
-- Prepare a list of interacted items by users
-- If we set groups - we get recommendations i.e. calculate amount of purchases by groups:
-    - If we get NaN, we fill it with base recommendations 
-    - If we get less than the required number of candidates, we populate from base recommendations
+    The pipeline will have two methods in the end: fit() and recommend()
 
-The logic of `recommend()`:
-- Return base recommendations if users data is not set;
-- In the case of category wise requirements -- we get results of our fit
+    The logic of `fit()` as follow:
+    - Initiate recommendation based on amount of purchases from all observations;
+    - Prepare a list of interacted items by users
+    - If we set groups - we get recommendations i.e. calculate amount of purchases by groups:
+        - If we get NaN, we fill it with base recommendations 
+        - If we get less than the required number of candidates, we populate from base recommendations
 
-MVP: Jupyter's notebook with methods 'fit' and 'recommend'
+    The logic of `recommend()`:
+    - Return base recommendations if users data is not set;
+    - In the case of category wise requirements -- we get results of our fit
+
+2. MVP includes building two-stage model.
+    - Initial ranker and reranker (for example). **TBC**
+
+- Stage 5 - Checking the results, optimization of MVP model
+
+Analyze the result of the baseline and MVP models. Choose optimal metrics for evaluating the quality of the model and hyperparameters of the model.
+**TBC**
+
+- Stage 6 - Developing backend and frontend of the site
+**TBC**
+
+
+- Stage 7 - Integration of the RecSys with backend, frontend. Developing reranking process in pipeline
+**TBC**
+  
+
+- Stage 7 - Integration of business rules (?)
+
+Checking that all necessary requirements are provided
+
+
+- Stage 8 - Presentation of the result
+
+Presentation of the system architecture (including description of the main parts), present the results of the conducted EDA, result of the model impementation (including optimal parameters and evaluation metrics)
+
+
 
 > Examples of stages:  
 > - Stage 2 - Prepare predictive models  
