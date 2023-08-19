@@ -130,6 +130,25 @@ Features:
 | Description of items | TBD | DE | TDB |
 | Items reviews | TBD | DE | TDB |
 
+MVP: Jupyter's notebook with loaded data.
+
+
+- Stage 2 - EDA, feature selection
+
+Cleaning data from outliers, filling nans and incorrect info due to the chosen strategy.
+Perform EDA and plot main distributions, graphs, statistics for the understanding and the insights. Make feature selection and form the feature space (including scaling).
+
+
+MVP: Jupyter's notebook with main conclusions and insights. Fixed feauture space.
+
+
+- Stage 3 - Definition of train, test, validation samples.
+
+Description and formation of samples for trainig, testing and validation.
+
+
+
+
 > Examples of stages:  
 > - Stage 2 - Prepare predictive models  
 > - Step 3 - Interpretation of models (as agreed with the customer)  
