@@ -189,15 +189,23 @@ MVP: Jupyter's notebook with methods 'fit' and 'recommend'
   
 #### 3.1. Method of evaluating the pilot  
   
-- Brief description of the intended design and method of evaluation of the pilot `Product Owner`, `Data Scientist` with `AB Group` 
+- Brief description of the intended design and method of evaluation of the pilot `Product Owner`, `Data Scientist` with `AB Group`
+
+- It would be RecSys model implemented in template of Ecomerce business; Evaluation would be done by experts with experience from Ecomerce, e-cinema streaming services, telecom 
   
 #### 3.2. What we consider a successful pilot  
   
 Metrics formalized in the pilot for evaluating the success of `Product Owner'   
+
+- Contr metrics ( retention, AOV, DAU) is the same or not falling
+- Target metric ( GMV, A2F, purchases) increased
+- Model is working effetictivly 80-90% score 
   
 #### 3.3. Pilot preparation  
   
-- What we can afford based on expected computational costs. If it is difficult to calculate initially, we describe the step of calculating the expected computational complexity on the baseline experiment. And provide for refining the pilot parameters and setting limits on the computational complexity of the models. ``Data Scientist'' 
+- What we can afford based on expected computational costs. If it is difficult to calculate initially, we describe the step of calculating the expected computational complexity on the baseline experiment. And provide for refining the pilot parameters and setting limits on the computational complexity of the models. ``Data Scientist''
+- We had less than 10 gb of data from marketplace so every thing could be done using not more than 16 gb ram
+- So according to computational costs we could create model and integrate it into marketplace tamplate version of the cite
 
 ### 4.
 Implementation `for production systems, if required'    
