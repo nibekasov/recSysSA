@@ -111,6 +111,8 @@
 > - As a rule, a detailed and structured filling of the `2.3` section is only possible **based on the results of EDA**.  
 > - If the description in the design doc is **template** - i.e. it can be copied and applied to different products, it is **incorrect**. The design doc should show a solution diagram for the specific problem posed in part 1.  
 
+Part 1 - baseline preparation
+
 - Stage 1 - Collection the data, preparing and initial analysis.
 
 Download transaction data from the given file. We load them into Jupiter's notebook. When selecting, we check the completeness of the data, choose the strategy about working with outliers and missing data, check the data types.
@@ -163,28 +165,45 @@ MVP: Jupyter's notebook with fixed split of data.
     - Return base recommendations if users data is not set;
     - In the case of category wise requirements -- we get results of our fit
 
-2. MVP includes building two-stage model.
+2. Two-satged model
     - Initial ranker and reranker (for example). **TBC**
+
 
 - Stage 5 - Checking the results, optimization of MVP model
 
-Analyze the result of the baseline and MVP models. Choose optimal metrics for evaluating the quality of the model and hyperparameters of the model.
-**TBC**
+We determine the quality metrics of the model. Then checking several models. Preferably 5-7, and find the best model through hyperparameters. If, as a result of training, the quality of the model cannot be raised to the baseline level, it is necessary to conduct an additional study of the database for potential features that play an important role in the selection. **TBC** Interpretation of the result and understandings weeknesses of model. Checkimg the significance of model's features.
+
+MVP: Jupyter notebook with a certain best model and its parameters that meets the stated quality criteria
+
 
 - Stage 6 - Developing backend and frontend of the site
 **TBC**
 
 
-- Stage 7 - Integration of the RecSys with backend, frontend. Developing reranking process in pipeline
+Step 5. -  baseline deployment according to the business requirements
+
+Deployment according to the business requirements. We prepare the stack according to the customer's requirements, transfer our baseline there and ensure that the model can be executed according to the stated logic. We are setting up integration with the test database, deploying the interface, setting up pipelines, editing the database.
+
+Description of the technique for achieving the set business requirements: **TBC**
+Checking the selected proxy metrics: **TBC**
+MVP: The model works with a test environment with the declared quality according to business requirements.
+
+Part 2 - Pilot
+
+- Stage 7 - Approval of the pilot's metrics. We determine the final metrics, proxy metrics and technical metrics, upon reaching which the model will be launched in the deployment. The goals are confirmed by the customer, the data scientist and the data engineer.
+
+MVP: Target metrics are defined based on available data and agreed with the business
+
+
+
+- Stage 7 - Developing backend and frontend of the site
+  Integration of the RecSys with backend, frontend. Developing reranking process in pipeline.**TBC**
+
+
+- Stage 8 - Integration of the RecSys with backend, frontend. Developing reranking process in pipeline
 **TBC**
-  
 
-- Stage 7 - Integration of business rules (?)
-
-Checking that all necessary requirements are provided
-
-
-- Stage 8 - Presentation of the result
+- Stage 9 - Presentation of the result
 
 Presentation of the system architecture (including description of the main parts), present the results of the conducted EDA, result of the model impementation (including optimal parameters and evaluation metrics)
 
@@ -199,18 +218,16 @@ Presentation of the system architecture (including description of the main parts
 > - Step 7 - Optimizer development (selection of optimal iteration)  
 > - Stage 8 - Preparing the final report for the business  
 
-
- 
 > Description of the technique **for each step** should include a description **separately for MVP** and **separately for baseline**:  
 
-- Horizon, granularity, frequency of necessary recalculation of `Data Scientist` predictive models   
-- Definition of the target variable, aligned with the `Data Scientist' business   
-- Which quality metrics we use and why they are related to the business outcome labeled `Product Owner` in sections `1` and `3`. Example - WAPE <= 50% for > 80% of categories, bias ~ 0. Possible formulation in terms relative to baseline, quantitatively. Baseline may have its own target metrics, or may not have any at all (if justified) `Data Scientist`.   
+> - Horizon, granularity, frequency of necessary recalculation of `Data Scientist` predictive models   
+> - Definition of the target variable, aligned with the `Data Scientist' business   
+> - Which quality metrics we use and why they are related to the business outcome labeled `Product Owner` in sections `1` and `3`. Example - WAPE <= 50% for > 80% of categories, bias ~ 0. Possible formulation in terms relative to baseline, quantitatively. Baseline may have its own target metrics, or may not have any at all (if justified) `Data Scientist`.   
 
- - Necessary stage outcome. For example, a necessary outcome may not just be the achievement of some quality metrics, but the inclusion of certain factors in the models (promo flag for revenue forecasting, etc.) `Data Scientist'.    
-- What the risks might be and what we plan to do about it. For example, a factor needed for a model (promo flag) will turn out to be insignificant for most models. Or for 50% of the models there will be insufficient data for `Data Scientist' estimation    
-- Upper-level principles and rationale for: feature engineering, solution algorithm selection, cross-validation techniques, result interpretation (if applicable).  
-- Whether business validation of the stage result is envisioned and how will the `Data Scientist` & `Product Owner` be conducted  
+> - Necessary stage outcome. For example, a necessary outcome may not just be the achievement of some quality metrics, but the inclusion of certain factors in the models (promo flag for revenue forecasting, etc.) `Data Scientist'.    
+> - What the risks might be and what we plan to do about it. For example, a factor needed for a model (promo flag) will turn out to be insignificant for most models. Or for 50% of the models there will be insufficient data for `Data Scientist' estimation    
+> - Upper-level principles and rationale for: feature engineering, solution algorithm selection, cross-validation techniques, result interpretation (if applicable).  
+> - Whether business validation of the stage result is envisioned and how will the `Data Scientist` & `Product Owner` be conducted  
   
 ### 3. Preparation of the pilot  
   
