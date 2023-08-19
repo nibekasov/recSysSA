@@ -138,15 +138,13 @@ MVP: Jupyter's notebook with loaded data.
 Cleaning data from outliers, filling nans and incorrect info due to the chosen strategy.
 Perform EDA and plot main distributions, graphs, statistics for the understanding and the insights. Make feature selection and form the feature space (including scaling).
 
-
 MVP: Jupyter's notebook with main conclusions and insights. Fixed feauture space.
-
 
 - Stage 3 - Definition of train, test, validation samples.
 
-Description and formation of samples for trainig, testing and validation.
+Description and formation of samples for trainig, testing and validation. Select the proportion for the corresponding samples. Take into account the time component in user actions (use later data in the test sample than for training and validation). Choose a validation method and it's parameters if (required) also taking into account time (for example, time-based). 
 
-
+MVP: Jupyter's notebook with fixed split of data.
 
 
 > Examples of stages:  
