@@ -111,7 +111,7 @@
 > - As a rule, a detailed and structured filling of the `2.3` section is only possible **based on the results of EDA**.  
 > - If the description in the design doc is **template** - i.e. it can be copied and applied to different products, it is **incorrect**. The design doc should show a solution diagram for the specific problem posed in part 1.  
 
-- Stage 1 - Collection the data, preparing and analysis.
+- Stage 1 - Collection the data, preparing and initial analysis.
 
 Download transaction data from the given file. We load them into Jupiter's notebook. When selecting, we check the completeness of the data, choose the strategy about working with outliers and missing data, check the data types.
 Sourse of the metadata about items - **TBD**
@@ -146,6 +146,22 @@ Description and formation of samples for trainig, testing and validation. Select
 
 MVP: Jupyter's notebook with fixed split of data.
 
+- Stage 4 - Initialization of baseline model and fit method
+
+The pipeline will have two methods in the end: fit() and recommend()
+
+The logic of `fit()` as follow:
+- Initiate recommendation based on amount of purchases from all observations;
+- Prepare a list of interacted items by users
+- If we set groups - we get recommendations i.e. calculate amount of purchases by groups:
+    - If we get NaN, we fill it with base recommendations 
+    - If we get less than the required number of candidates, we populate from base recommendations
+
+The logic of `recommend()`:
+- Return base recommendations if users data is not set;
+- In the case of category wise requirements -- we get results of our fit
+
+MVP: Jupyter's notebook with methods 'fit' and 'recommend'
 
 > Examples of stages:  
 > - Stage 2 - Prepare predictive models  
@@ -156,26 +172,10 @@ MVP: Jupyter's notebook with fixed split of data.
 > - Step 7 - Optimizer development (selection of optimal iteration)  
 > - Stage 8 - Preparing the final report for the business  
 
-*Stage 1 is typically, data preparation.  
 
-This stage should include the following:  
-
-- The data and entities on which your machine learning model will be trained. A separate table for the target variable (or target variables of different stages), a separate table for the features.  
-
-| Name of data | Does the data exist in the company (if yes, name of source/storefront) | Resource required to retrieve the data (what roles are needed) | Has the data quality been verified (yes, no) |
-| ------------- | ------------- | ------------- | ------------- |
-| Sales | DATAMARTS_SALES_PER_DAY | DE/DS | + | |
-| ...  | ...  | ... | ... |
  
-- Brief description of the result of the step - what should be the output: data showcases, data streams, etc.  
-  
-> Most of the time it is not possible to complete the section without EDA.
+> Description of the technique **for each step** should include a description **separately for MVP** and **separately for baseline**:  
 
- **Steps 2 and beyond, in addition to data preparation.
- 
-Description of the technique **for each step** should include a description **separately for MVP** and **separately for baseline**:  
-
-- Description of sample generation for training, testing, and validation. Selection of representative data for experimentation, training and pilot training (from business objective and data representativeness from technical point of view) `Data Scientist'    
 - Horizon, granularity, frequency of necessary recalculation of `Data Scientist` predictive models   
 - Definition of the target variable, aligned with the `Data Scientist' business   
 - Which quality metrics we use and why they are related to the business outcome labeled `Product Owner` in sections `1` and `3`. Example - WAPE <= 50% for > 80% of categories, bias ~ 0. Possible formulation in terms relative to baseline, quantitatively. Baseline may have its own target metrics, or may not have any at all (if justified) `Data Scientist`.   
