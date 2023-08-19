@@ -48,8 +48,8 @@
   
 - What we expect from a particular iteration : Building the RecSys itself with all stages of working with data (from database), rank and rerank stages, model validation due to the pipeline. Implementation of user interaction with the service via the web interface.
   
-- Pilot business process description as far as possible - how exactly will we use the model in an existing business process : Имеем данные с описанием товаров, отзывы покупателей на товары, исторические данные покупок пользователя. Составляем эмбеддинги: имен товаров, характеристик + отзывов товаров, действиях каждого пользователя (просмотры, покупки). Формируем из базы данных список товаров, для которых мы будем искать похожие. Для каждого товара из данного списка рассчитываем на основании усредненных эмбеддингов топ X ближайших товаров (близость рассчитываем косинусным расстоянием) из всего каталога. id товара, результат топ X для каждого этого товара сохраняется в хранилище S3.
-  Дополнить... .
+- Pilot business process description as far as possible : The user visits the site and logs into his account. After logging into the account, he receives a list of personalized recommendations. Recommendations are made in 2 stages: the primary list of goods is formed only on the basis of user actions; the second stage of rearrangement is made on the basis of meta-information about goods, information about user interactions with goods. The final list of top X recommended products is stored in the storage (like S3?). From this storage, information about the name, images of goods is displayed on the user's page.
+
 
 - What do we consider a successful pilot? Success criteria and possible ways to develop the project : A successful model will correctly gives recommendations that are potentially interesting to the client.
 
