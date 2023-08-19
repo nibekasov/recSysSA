@@ -90,8 +90,14 @@
 
 #### 2.1. Problem Statement  
 
+
 - What we do from a technical point of view: recommendation system, anomaly search, prediction, optimization, etc. `Data Scientist
-- recommendation system 
+- The central objective of our current project is the development of a sophisticated recommendation system. The recommendation system aims to provide tailored suggestions and insights to users, optimizing their experience and interaction with our platform. This system will leverage user behavior, preferences, historical data, and contextual information to generate accurate and relevant recommendations.
+- To enhance the user experience, our recommendation system should be capable of real-time updates. This requires the development of mechanisms to incorporate new user interactions and preferences instantaneously into the recommendation generation process.
+- As our user base continues to grow, it is essential that our recommendation system remains scalable. We must design an architecture that can handle increasing data volumes without compromising the responsiveness and speed of generating recommendations.
+- Personalization is a crucial aspect of our recommendation system. We need to develop strategies to effectively capture individual user preferences, even when dealing with diverse and evolving user profiles.
+
+
 #### 2.2. Solution flowchart  
 
 - Flowchart for the baseline and main MVP with key stages of the problem solution: data preparation, building predictive models, optimization, testing, technical debt closure, pilot preparation, other. `Data Scientist`.  
