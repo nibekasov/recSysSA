@@ -214,14 +214,27 @@ Implementation `for production systems, if required'
   
 #### 4.1. Solution architecture   
   
-- Block diagram and explanations: services, assignments, methods of `Data Scientist` API.#### 4.2.Description of infrastructure and scalability 
+- Block diagram and explanations: services, assignments, methods of `Data Scientist` API.
+- #ToDo:
+
+#### 4.2.Description of infrastructure and scalability 
   
-- What infrastructure is chosen and why `Data Scientist`. 
-- Pros and cons of choosing `Data Scientist`. 
-- Why the final choice is better than other `Data Scientist` alternatives#### 4.3.System performance requirements- SLA, throughput and latency of `Data Scientist`  
+- What infrastructure is chosen and why `Data Scientist`.
+- flask(simple?),JS(simple lots of opportunites to make better solutions), Airflow(just a standart), mlFlow(?)
+- Pros and cons of choosing `Data Scientist`.
+- flask(fast api is faster, used more in enterprise, Django is used in lots of projects) JS(vanila js is rusty, not all frameworks could be implemented straigthforward, but e.g react could be infiltreted easely) ,Airflow(used in lots of companies,but's need more memory and more resources to maitain),mlFlow
+- Why the final choice is better than other `Data Scientist` alternatives
+- Relativly simle to implement, main focus on ml model and data analysis, rather then infastructure and development(crucial just as mvp)
+
+
+#### 4.3.System performance requirements- SLA, throughput and latency of `Data Scientist`  
+
+- SLA not longer than 10-20% site work usually ( citation is needed/ downgrade experiment )
+- #ToDo: Think more
   
 #### 4.4.System Security- Potential vulnerability of the `Data Scientist` system  
 
+- Data of algorithms could be leeked => Rivals would know what strategy we have => e.g what king of products we whant to sell
   
 #### 4.5.Data Security   
   
