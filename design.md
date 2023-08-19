@@ -21,23 +21,27 @@
 - Business objective : Building a recommendation system for personalized recommendations of goods from the site catalog to the user. As a result, we expect an improvement in user experience during the interaction with the service, which is expressed in the number of purchases of goods from the category "You may like it".
 
 
-  Сопутствующие вопросы:
-   - Определить четко бизнес-метрику, которую хотим наращивать: среднее количество покупок пользователя со страницы рекомендаций, средний чек пользователя при покупке со страницы рекомендаций, LTV пользователя ?
-   - На сколько ожидаем увеличение бизнес-метрики? В течение какого периода считаем метрику? Кажется, что 1-2 месяца будет достаточно
-   - Решаем задачу только для авторизованных пользователей? На сайте вб (без входа в аккаунт) не увидела раздела "Возможно, вам понравится"... 
-    
-- Why will it become better than it is now from using ML : Due to the large number of products in the catalog, it is necessary to use a ranking algorithm. Large amount of data about user actions and items is available and allows to build a personalized recommendation system. RecSys will more often offer the user interesting (or potentially interesting)  products, thereby increasing user satisfaction.
+- Why will it become better than it is now from using ML : Due to the large number of products in the catalog, it is necessary to use a ranking algorithm. Large amount of data about user actions and items is available and allows to build a personalized recommendation system. RecSys will more often offer the user interesting (or potentially interesting)  products, thereby increasing user satisfaction. 
 
   
-- What we will consider the success of the iteration from the business perspective:
-  1. The value of the ranking metric using the new model > the value of the metric using the old one. If the answers of the old model are unknown, then we evaluate the quality on a test sample of historical data. If the answers of the old model are known, then we evaluate the quality of the models among themselves.
-  2. The value of the target metric after implementation of the model is higher by X%. To assess the business effect, it is recommended to conduct an A/B controlled experiment, which is not provided for in the pilot.
+- What we will consider as a success of the iteration from the business perspective:
+  1. The value of the ranking metric on a test sample of historical data is higher than X.
+  2. The value of the target business-metric after implementation of the model is higher by X%. To assess the business effect, it is recommended to conduct an A/B controlled experiment, which is not provided in the pilot.
 
+
+---
+  Additional questions:
+   - Should we define the business-metric and it's uplift at this stage? Possible variants: the average number of user purchases from the recommendations page, the average user bill for purchases from the recommendations page, the user's LTV.
+   - На сколько ожидаем увеличение бизнес-метрики? В течение какого периода считаем метрику? Кажется, что 1-2 месяца будет достаточно
+   - Решаем задачу только для авторизованных пользователей? На сайте вб (без входа в аккаунт) не увидела раздела "Возможно, вам понравится"...
+   - The value of the ranking metric using the new model > the value of the metric using the old one. If the answers of the old model are unknown, then we evaluate the quality on a test sample of historical data. If the answers of the old model are known, then we evaluate the quality of the models among themselves.
 
   Сопутствующие вопросы:
     - Выбрать метрику. Видимо, что-то из MAP@k, AP@k, MRR, NDCG. Обосновать выбор метрики.
     - Упомянуть про барьерные метрики и ограничения на их изменения в ходе периода оценки успешности проекта
     - Оценить возможные приросты метрик.
+    
+---
       
 #### 1.2 Business Requirements and Constraints  
 
