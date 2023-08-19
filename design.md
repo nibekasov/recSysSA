@@ -29,12 +29,14 @@
   2. The value of the target business-metric after implementation of the model is higher by X%. To assess the business effect, it is recommended to conduct an A/B controlled experiment, which is not provided in the pilot.
 
 
+
 ---
   Additional questions:
-   - Should we define the business-metric and it's uplift at this stage? Possible variants: the average number of user purchases from the recommendations page, the average user bill for purchases from the recommendations page, the user's LTV.
-   - На сколько ожидаем увеличение бизнес-метрики? В течение какого периода считаем метрику? Кажется, что 1-2 месяца будет достаточно
-   - Решаем задачу только для авторизованных пользователей? На сайте вб (без входа в аккаунт) не увидела раздела "Возможно, вам понравится"...
-   - The value of the ranking metric using the new model > the value of the metric using the old one. If the answers of the old model are unknown, then we evaluate the quality on a test sample of historical data. If the answers of the old model are known, then we evaluate the quality of the models among themselves.
+   - Should we define the business-metric, it's uplift at this stage? Possible variants: the average number of user purchases from the recommendations page, the average user bill for purchases from the recommendations page, the user's LTV.
+   - Do we solve the problem only for authorized users? On the WB website (without logging in to the account) there is no see section "You may like it".
+   - If we already had a recommendation system, we would compare the quality of the models with each other?
+   - Do we need to clearly define ranking metric at this stage? Possible variants: MAP@k, AP@k, MRR, NDCG
+   - Are we interested in type of action which the user will perform with our recommendation list? Do we understand correct, that: we have to recommend a list of products based on the user's history, and check whether the user actually interacted with the products of this list? And what a position of the "interaction item" is?
 
   Сопутствующие вопросы:
     - Выбрать метрику. Видимо, что-то из MAP@k, AP@k, MRR, NDCG. Обосновать выбор метрики.
@@ -42,6 +44,7 @@
     - Оценить возможные приросты метрик.
     
 ---
+
       
 #### 1.2 Business Requirements and Constraints  
 
