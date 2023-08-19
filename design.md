@@ -35,29 +35,31 @@
    - Should we define the business-metric, it's uplift at this stage? Possible variants: the average number of user purchases from the recommendations page, the average user bill for purchases from the recommendations page, the user's LTV.
    - Do we solve the problem only for authorized users? On the WB website (without logging in to the account) there is no see section "You may like it".
    - If we already had a recommendation system, we would compare the quality of the models with each other?
-   - Do we need to clearly define ranking metric at this stage? Possible variants: MAP@k, AP@k, MRR, NDCG
    - Are we interested in type of action which the user will perform with our recommendation list? Do we understand correct, that: we have to recommend a list of products based on the user's history, and check whether the user actually interacted with the products of this list? And what a position of the "interaction item" is?
+   - Do we need to clearly define ranking metric and it's expected value at this stage? Possible variants: MAP@k, AP@k, MRR, NDCG
 
-  Сопутствующие вопросы:
-    - Выбрать метрику. Видимо, что-то из MAP@k, AP@k, MRR, NDCG. Обосновать выбор метрики.
-    - Упомянуть про барьерные метрики и ограничения на их изменения в ходе периода оценки успешности проекта
-    - Оценить возможные приросты метрик.
-    
 ---
 
-      
 #### 1.2 Business Requirements and Constraints  
 
 - A brief description of BR and links to detailed business requirements documents : Machine learning model works due to the "request-response" principle. A request is received from the system database with data about the history of user actions, products in the catalog (features). In response, the system issues a response with the ID numbers of the products that are relevant to the user. The list of products, their image and description are displayed on the user's website.
 
-- `Product Owner' business constraints : "request-response" process must must take not more than X ms.
+- `Product Owner' business constraints : "request-response" process must must take not more than X ms. 
   
-- What we expect from a particular iteration : Building the RecSys itself with all stages of working with data, rank and rerank, model validation due to the pipeline. Implementation of user interaction with the service via the web interface.
+- What we expect from a particular iteration : Building the RecSys itself with all stages of working with data (from database), rank and rerank stages, model validation due to the pipeline. Implementation of user interaction with the service via the web interface.
   
 - Pilot business process description as far as possible - how exactly will we use the model in an existing business process : Имеем данные с описанием товаров, отзывы покупателей на товары, исторические данные покупок пользователя. Составляем эмбеддинги: имен товаров, характеристик + отзывов товаров, действиях каждого пользователя (просмотры, покупки). Формируем из базы данных список товаров, для которых мы будем искать похожие. Для каждого товара из данного списка рассчитываем на основании усредненных эмбеддингов топ X ближайших товаров (близость рассчитываем косинусным расстоянием) из всего каталога. id товара, результат топ X для каждого этого товара сохраняется в хранилище S3.
   Дополнить... .
 
 - What do we consider a successful pilot? Success criteria and possible ways to develop the project : A successful model will correctly gives recommendations that are potentially interesting to the client.
+
+---
+  Additional questions:
+   - Do we need to clearly define barrier metrics and them expected values at this stage?
+
+
+
+---
 
 
 #### 1.3. What is included in the project/iteration scope, what is not included   
