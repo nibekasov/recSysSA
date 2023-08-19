@@ -84,7 +84,7 @@
 - Description of the planned technical debt (what we leave for further productization) `Data Scientist`.
   1. We use data about users' actions and items with granularity: userid - itemid - status of the recommendation (was the item recommended to the user and on which position in result list it presented). Predictors ~ actions of users and items' info. Target ~ recommendation.
 
-#### 1.4.Solution prerequisites- Description of all common solution assumptions used in the system - with justification from the business request: which data blocks we use, forecast horizon, model granularity, etc. ``Data Scientist''  
+#### 1.4. Solution prerequisites - Description of all common solution assumptions used in the system - with justification from the business request: which data blocks we use, forecast horizon, model granularity, etc. ``Data Scientist''  
 
 ### 2. `Data Scientist' methodology     
 
@@ -183,11 +183,6 @@ MVP: Jupyter notebook with a certain best model and its parameters that meets th
 
 **TBC.**
 
-
-Step 5. -  baseline deployment according to the business requirements
-
-Deployment according to the business requirements. We prepare the stack according to the customer's requirements, transfer our baseline there and ensure that the model can be executed according to the stated logic. We are setting up integration with the test database, deploying the interface, setting up pipelines, editing the database.
-
 Description of the technique for achieving the set business requirements: **TBC.**
 Checking the selected proxy metrics: **TBC.**
 
@@ -200,19 +195,16 @@ Part 2 - Pilot
 MVP: Target metrics are defined based on available data and agreed with the business
 
 
+- Stage 8 - Developing backend and frontend of the site
+  Integration of the RecSys with backend, frontend. Developing reranking process in pipeline. **TBC.**
 
-- Stage 7 - Developing backend and frontend of the site
-  Integration of the RecSys with backend, frontend. Developing reranking process in pipeline.**TBC.**
+- Stage 9 - Integration of the RecSys with backend, frontend. Developing reranking process in pipeline
 
+**TBC.**
 
-- Stage 8 - Integration of the RecSys with backend, frontend. Developing reranking process in pipeline
+- Stage 10 - Presentation of the result
 
-**TBC**
-
-- Stage 9 - Presentation of the result
-
-Presentation of the system architecture (including description of the main parts), present the results of the conducted EDA, result of the model impementation (including optimal parameters and evaluation metrics)
-
+Presentation of the system architecture (including description of the main parts), present the results of the conducted EDA, result of the model implementation (including optimal parameters and evaluation metrics)
 
 > Examples of stages:  
 > - Stage 2 - Prepare predictive models  
@@ -246,9 +238,11 @@ Presentation of the system architecture (including description of the main parts
   
 Metrics formalized in the pilot for evaluating the success of `Product Owner'   
 
+- Model is working effetictivly 80-90% score 
+
+**
 - Contr metrics ( retention, AOV, DAU) is the same or not falling
 - Target metric ( GMV, A2F, purchases) increased
-- Model is working effetictivly 80-90% score 
   
 #### 3.3. Pilot preparation  
   
