@@ -1,0 +1,2 @@
+The `utils` module contains commonly used functions or classes shared across different parts of the service.
+This module may include functions for logging, visualization, file I/O, or any other utility functions that are not specific to either the data preparation or modeling modules.
