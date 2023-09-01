@@ -1,4 +1,4 @@
-  - [ ] Documnetation
+  - [x] Documnetation
     - Checkpoint: 19.08.2023
   - [ ] C4 architecture notation
   - [ ] EDA & preprocessing
