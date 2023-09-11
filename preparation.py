@@ -17,3 +17,9 @@ interactions = drop_nan_values(interactions)
 interactions = check_data_types(interactions)
 interactions = remove_reg_event(interactions)
 interactions = add_session_feature(interactions)
+
+
+path = r"C:\Users\qwerty\Documents\GitHub\recSysSoA\data\preprocessed_data\interactions.parquet"
+interactions.repartition(1).write.format("parquet").mode("overwrite").save(path)
+
+
