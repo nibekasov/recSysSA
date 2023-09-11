@@ -13,7 +13,7 @@ from utils.utils import (
 )
 
 
-def prepare_data_for_train() -> Tuple[pd.DataFrame]:
+def prepare_data_for_train():
     """
     function to prepare data to train catboost classifier.
     Basically, you have to wrap up code from full_recsys_pipeline.ipynb

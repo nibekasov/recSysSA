@@ -43,6 +43,12 @@ def train_lfm(data_path: str = None) -> None:
 p = r"C:\Users\qwerty\Documents\GitHub\recSysSoA\data\preprocessed_data\interactions_local_train.parquet"
 train_lfm(p)
 
+
+# data_for_train_ranker = prepare_data_for_train()
+# print(data_for_train_ranker.head())
+
+
+
 # def train_ranker():
 #     """
 #     executes training pipeline for 2nd level model
