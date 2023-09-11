@@ -40,7 +40,7 @@ def train_lfm(data_path: str = None) -> None:
     )
     logging.info('Finished training LightFM model!')
 
-p = r"C:\Users\qwerty\Documents\GitHub\recSysSoA\data\preprocessed_data\interactions.parquet"
+p = r"C:\Users\qwerty\Documents\GitHub\recSysSoA\data\preprocessed_data\interactions_local_train.parquet"
 train_lfm(p)
 
 # def train_ranker():

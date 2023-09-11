@@ -1,5 +1,6 @@
 import os
 import dill
+import numpy as np
 
 
 def save_csv_to_path(add_path, data):
