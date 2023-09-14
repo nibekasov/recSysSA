@@ -27,7 +27,7 @@ def get_recommendations(user_id: int, top_k: int = 20):
 
     lfm_model = LFMModel()
 #     ranker = Ranker()
-#
+
     try:
         logging.info('Getting 1st level candidates...')
         candidates = lfm_model.infer(user_id=user_id, top_k=top_k)

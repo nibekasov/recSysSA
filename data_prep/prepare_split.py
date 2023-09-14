@@ -14,6 +14,7 @@ def split_train_test(data_path) -> None:
     MIN_DATE = pd.to_datetime(interactions['timestamp_event_time'].min())
     TEST_INTERVAL_DAYS = 7
 
+
     TEST_MAX_DATE = MAX_DATE - dt.timedelta(days=TEST_INTERVAL_DAYS)
 
     global_train = interactions.loc[pd.to_datetime(interactions['timestamp_event_time']) < TEST_MAX_DATE]
@@ -34,13 +35,6 @@ def split_train_test(data_path) -> None:
     global_test.to_parquet(union_path + r"\interactions_global_test.parquet")
 
     logging.info("Split is performed!")
-
-
-
-
-
-
-
 
 
 

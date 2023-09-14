@@ -13,6 +13,12 @@ from utils.utils import (
 )
 
 
+import logging
+logging.basicConfig()
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+
 def prepare_data_for_train():
     """
     function to prepare data to train catboost classifier.
@@ -73,38 +79,35 @@ def prepare_data_for_train():
     # return train_data
     return test_preds
 
-def get_ranker_sample(preds: pd.DataFrame, users_sample: pd.DataFrame):
+def get_ranker_sample(test_preds: pd.DataFrame):
     """
     final step to use candidates generation and users interaction to define
     train data - join features, define target, split into train & test samples
     """
-    local_test = users_sample.copy(deep=True)
+    # local_test = users_sample.copy(deep=True)
+    local_test = pd.read_parquet(r"C:\Users\qwerty\Documents\GitHub\recSysSoA\data\preprocessed_data\interactions_local_test.parquet")
 
     # prepare train & test
-    positive_preds = pd.merge(preds, local_test, how="inner", on=["user_id", "item_id"])
-    positive_preds["target"] = 1
+    positive_preds = pd.merge(test_preds, local_test, how='inner', on=['user_id', 'item_id'])
+    positive_preds['target'] = 1
     logging.info(f"Shape of the positive target preds: {positive_preds.shape}")
 
-    negative_preds = pd.merge(preds, local_test, how="left", on=["user_id", "item_id"])
-    negative_preds = negative_preds.loc[negative_preds["watched_pct"].isnull()].sample(
-        frac=settings.RANKER_DATA.NEG_FRAC
-    )
-    negative_preds["target"] = 0
+    negative_preds = pd.merge(local_test, test_preds, how='left', on=['user_id', 'item_id'])
+    negative_preds = negative_preds.loc[negative_preds['event_type'] != 'purchase'].sample(frac=.05)
+    negative_preds['target'] = 0
     logging.info(f"Shape of the negative target preds: {positive_preds.shape}")
 
     # random split to train ranker
     train_users, test_users = train_test_split(
-        local_test["user_id"].unique(),
-        test_size=0.2,
-        random_state=settings.RANKER_DATA.RANDOM_STATE,
+        local_test['user_id'].unique(),
+        test_size=.2,
+        random_state=13
     )
 
     cbm_train_set = shuffle(
         pd.concat(
-            [
-                positive_preds.loc[positive_preds["user_id"].isin(train_users)],
-                negative_preds.loc[negative_preds["user_id"].isin(train_users)],
-            ]
+            [positive_preds.loc[positive_preds['user_id'].isin(train_users)],
+             negative_preds.loc[negative_preds['user_id'].isin(train_users)]]
         )
     )
 
@@ -117,57 +120,65 @@ def get_ranker_sample(preds: pd.DataFrame, users_sample: pd.DataFrame):
         )
     )
 
-    users_data = read_parquet_from_gdrive(settings.RANKER_DATA.USERS_DATA_PATH)
-    items_data = read_parquet_from_gdrive(settings.RANKER_DATA.MOVIES_DATA_PATH)
+    # users_data = read_parquet_from_gdrive(settings.RANKER_DATA.USERS_DATA_PATH)
+    # items_data = read_parquet_from_gdrive(settings.RANKER_DATA.MOVIES_DATA_PATH)
 
     # join user features
-    cbm_train_set = pd.merge(
-        cbm_train_set,
-        users_data[["user_id"] + settings.USER_FEATURES],
-        how="left",
-        on=["user_id"],
-    )
-    cbm_test_set = pd.merge(
-        cbm_test_set,
-        users_data[["user_id"] + settings.USER_FEATURES],
-        how="left",
-        on=["user_id"],
-    )
-    # join item features
-    cbm_train_set = pd.merge(
-        cbm_train_set,
-        items_data[["item_id"] + settings.ITEM_FEATURES],
-        how="left",
-        on=["item_id"],
-    )
-    cbm_test_set = pd.merge(
-        cbm_test_set,
-        items_data[["item_id"] + settings.ITEM_FEATURES],
-        how="left",
-        on=["item_id"],
-    )
+    # cbm_train_set = pd.merge(
+    #     cbm_train_set,
+    #     users_data[["user_id"] + settings.USER_FEATURES],
+    #     how="left",
+    #     on=["user_id"],
+    # )
+    # cbm_test_set = pd.merge(
+    #     cbm_test_set,
+    #     users_data[["user_id"] + settings.USER_FEATURES],
+    #     how="left",
+    #     on=["user_id"],
+    # )
+    # # join item features
+    # cbm_train_set = pd.merge(
+    #     cbm_train_set,
+    #     items_data[["item_id"] + settings.ITEM_FEATURES],
+    #     how="left",
+    #     on=["item_id"],
+    # )
+    # cbm_test_set = pd.merge(
+    #     cbm_test_set,
+    #     items_data[["item_id"] + settings.ITEM_FEATURES],
+    #     how="left",
+    #     on=["item_id"],
+    # )
 
     # final steps
+    ID_COLS = ['user_id', 'item_id']
+    TARGET = ['target']
+    CATEGORICAL_COLS = ['platform', 'event_type']
+    DROP_COLS = ['utc_event_time', 'utc_event_date', 'id', 'year', 'month', 'day',
+                 'timestamp_event_time', 'lag_event_timestamp', 'is_first_event', 'timestamp_first_event', 'session_id',
+                 'session_duration']
+
     drop_cols = (
-        settings.CBM_COLS_CONFIG.ID_COLS.to_list()
-        + settings.CBM_COLS_CONFIG.DROP_COLS.to_list()
-        + settings.TARGET.to_list()
+        ID_COLS +
+        DROP_COLS +
+        TARGET
     )
     X_train, y_train = (
         cbm_train_set.drop(
             drop_cols,
             axis=1,
         ),
-        cbm_train_set[settings.TARGET],
+        cbm_train_set[TARGET],
     )
+
     X_test, y_test = (
         cbm_test_set.drop(
             drop_cols,
             axis=1,
         ),
-        cbm_test_set[settings.TARGET],
+        cbm_test_set[TARGET],
     )
-    logging.info(X_train.shape, X_test.shape)
+    logging.info(f"X_train.shape, X_test.shape {X_train.shape, X_test.shape}")
 
     # no time dependent feature -- we can leave it with mode
     X_train = X_train.fillna(X_train.mode().iloc[0])
@@ -176,85 +187,91 @@ def get_ranker_sample(preds: pd.DataFrame, users_sample: pd.DataFrame):
     return X_train, X_test, y_train, y_test
 
 
-def get_items_features(item_ids: List[int], item_cols: List[str]) -> Dict[int, Any]:
-    """
-    function to get items features from our available data
-    that we used in training (for all candidates)
-        :item_ids:  item ids to filter by
-        :item_cols: feature cols we need for inference
-
-    EXAMPLE OUTPUT
-    {
-    9169: {
-    'content_type': 'film',
-    'release_year': 2020,
-    'for_kids': None,
-    'age_rating': 16
-        },
-
-    10440: {
-    'content_type': 'series',
-    'release_year': 2021,
-    'for_kids': None,
-    'age_rating': 18
-        }
-    }
-
-    """
-    item_features = read_parquet_from_gdrive(
-        "https://drive.google.com/file/d/1XGLUhHpwr0NxU7T4vYNRyaqwSK5HU3N4/view?usp=share_link"
-    )
-    item_features = item_features.set_index("item_id")
-    item_features = item_features.to_dict("index")
-
-    # collect all items
-    output = {}
-    for id in item_ids:
-        output[id] = {k: v for k, v in item_features.get(id).items() if k in item_cols}
-
-    return output
+test_preds = prepare_data_for_train()
+print(test_preds.head(5))
+X_train, X_test, y_train, y_test = get_ranker_sample(test_preds)
+print(X_train.head())
 
 
-def get_user_features(user_id: int, user_cols: List[str]) -> Dict[str, Any]:
-    """
-    function to get user features from our available data
-    that we used in training
-        :user_id: user id to filter by
-        :user_cols: feature cols we need for inference
-
-    EXAMPLE OUTPUT
-    {
-        'age': None,
-        'income': None,
-        'sex': None,
-        'kids_flg': None
-    }
-    """
-    users = read_parquet_from_gdrive(
-        "https://drive.google.com/file/d/1MCTl6hlhFYer1BTwjzIBfdBZdDS_mK8e/view?usp=share_link"
-    )
-    users = users.set_index("user_id")
-    users_dict = users.to_dict("index")
-    return {k: v for k, v in users_dict.get(user_id).items() if k in user_cols}
-
-
-def prepare_ranker_input(
-    candidates: Dict[int, int],
-    item_features: Dict[int, Any],
-    user_features: Dict[int, Any],
-    ranker_features_order,
-):
-    ranker_input = []
-    for k in item_features.keys():
-        item_features[k].update(user_features)
-        item_features[k]["rank"] = candidates[k]
-        item_features[k] = {
-            feature: item_features[k][feature] for feature in ranker_features_order
-        }
-        ranker_input.append(list(item_features[k].values()))
-
-    return ranker_input
-
+# def get_items_features(item_ids: List[int], item_cols: List[str]) -> Dict[int, Any]:
+#     """
+#     function to get items features from our available data
+#     that we used in training (for all candidates)
+#         :item_ids:  item ids to filter by
+#         :item_cols: feature cols we need for inference
+#
+#     EXAMPLE OUTPUT
+#     {
+#     9169: {
+#     'content_type': 'film',
+#     'release_year': 2020,
+#     'for_kids': None,
+#     'age_rating': 16
+#         },
+#
+#     10440: {
+#     'content_type': 'series',
+#     'release_year': 2021,
+#     'for_kids': None,
+#     'age_rating': 18
+#         }
+#     }
+#
+#     """
+#     item_features = read_parquet_from_gdrive(
+#         "https://drive.google.com/file/d/1XGLUhHpwr0NxU7T4vYNRyaqwSK5HU3N4/view?usp=share_link"
+#     )
+#     item_features = item_features.set_index("item_id")
+#     item_features = item_features.to_dict("index")
+#
+#     collect all items
+    # output = {}
+    # for id in item_ids:
+    #     output[id] = {k: v for k, v in item_features.get(id).items() if k in item_cols}
+    #
+    # return output
+#
+#
+# def get_user_features(user_id: int, user_cols: List[str]) -> Dict[str, Any]:
+#     """
+#     function to get user features from our available data
+#     that we used in training
+#         :user_id: user id to filter by
+#         :user_cols: feature cols we need for inference
+#
+#     EXAMPLE OUTPUT
+#     {
+#         'age': None,
+#         'income': None,
+#         'sex': None,
+#         'kids_flg': None
+#     }
+#     """
+#     users = read_parquet_from_gdrive(
+#         "https://drive.google.com/file/d/1MCTl6hlhFYer1BTwjzIBfdBZdDS_mK8e/view?usp=share_link"
+#     )
+#     users = users.set_index("user_id")
+#     users_dict = users.to_dict("index")
+#     return {k: v for k, v in users_dict.get(user_id).items() if k in user_cols}
+#
+#
+# def prepare_ranker_input(
+#     candidates: Dict[int, int],
+#     item_features: Dict[int, Any],
+#     user_features: Dict[int, Any],
+#     ranker_features_order,
+# ):
+#     ranker_input = []
+#     for k in item_features.keys():
+#         item_features[k].update(user_features)
+#         item_features[k]["rank"] = candidates[k]
+#         item_features[k] = {
+#             feature: item_features[k][feature] for feature in ranker_features_order
+#         }
+#         ranker_input.append(list(item_features[k].values()))
+#
+#     return ranker_input
+#
 
 
 

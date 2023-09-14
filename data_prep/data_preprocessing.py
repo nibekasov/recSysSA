@@ -52,7 +52,7 @@ def sampling(data, fraction=0.001, seed=21):
     return data
 
 
-def remove_brackets(data, columns_brackets: list = ['price', 'quantity', 'item_id']):
+def remove_brackets(data, columns_brackets: list =  ['price', 'quantity', 'item_id', 'main_category', 'sub_category']):
     """
     removes brackets in columns' values given in columns_brackets
     """
@@ -80,6 +80,8 @@ def check_data_types(data):
         .withColumn("price", data["price"].cast(IntegerType())) \
         .withColumn("quantity", data["quantity"].cast(IntegerType())) \
         .withColumn("item_id", data["item_id"].cast(StringType())) \
+        .withColumn("main_category", df["main_category"].cast(StringType())) \
+        .withColumn("sub_category", df["sub_category"].cast(StringType())) \
         .withColumn("timestamp_event_time", F.to_timestamp("utc_event_time", 'yyyy-MM-dd HH:mm:ssXXX')) \
         .withColumn("year", F.year(F.to_timestamp("utc_event_date", 'yyyy-MM-dd'))) \
         .withColumn("month", F.month(F.to_timestamp("utc_event_date", 'yyyy-MM-dd'))) \
