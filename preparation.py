@@ -1,4 +1,4 @@
-from data_prep.data_preprocessing import \
+from airflow.dags.scripts.data_prep.data_preprocessing import \
     load_csv_from_path \
     ,rename_columns \
     ,sampling \

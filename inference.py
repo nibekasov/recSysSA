@@ -1,7 +1,4 @@
-import pandas as pd
-import numpy as np
-
-from models.lfm import LFMModel
+from airflow.dags.scripts.models.lfm import LFMModel
 # from models.ranker import Ranker
 
 # from configs.config import settings

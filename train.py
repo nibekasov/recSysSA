@@ -1,14 +1,8 @@
 import pandas as pd
-import os
 
-
-from models.lfm import LFMModel
+from airflow.dags.scripts.models.lfm import LFMModel
 # from models.ranker import Ranker
 # from utils.utils import read_parquet_from_gdrive
-
-from data_prep.prepare_ranker_data import prepare_data_for_train
-
-from fire import Fire
 
 import logging
 logging.basicConfig()
@@ -16,7 +10,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 
-df = pd.read_parquet(r"C:\Users\qwerty\Documents\GitHub\recSysSoA\data\preprocessed_data\interactions.parquet", engine='pyarrow')
+df = pd.read_parquet(r"airflow/dags/scripts/data\preprocessed_data\interactions.parquet", engine='pyarrow')
 def train_lfm(data_path: str = None) -> None:
     """
     trains model for a given data with interactions

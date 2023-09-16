@@ -1,21 +1,14 @@
 import findspark
 findspark.init()
-import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
-from pyspark.sql.types import IntegerType, LongType, StringType, DateType, FloatType
+from pyspark.sql.types import IntegerType, LongType, StringType, DateType
 from pyspark.sql.window import Window
-
-import time
-import logging
 
 import warnings
 warnings.filterwarnings("ignore")
 
-import numpy as np
-import pandas as pd
 
-from utils.utils import save_csv_to_path
 def create_spark_session() -> None:
     spark = SparkSession \
         .builder \
