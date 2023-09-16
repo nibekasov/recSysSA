@@ -161,3 +161,4 @@ cython_debug/
 airflow/dags/scripts/data/initial_data/ab_data.csv
 airflow/dags/scripts/data/initial_data/ab_data_old.csv
 
+airflow/logs/scheduler/latest
