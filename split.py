@@ -1,4 +1,9 @@
-from airflow.dags.scripts.data_prep.prepare_split import split_train_test
+from pathlib import Path
+import sys
 
-data_path = r"C:\Users\qwerty\Documents\GitHub\recSysSoA\data\preprocessed_data\interactions.parquet"
-split_train_test(data_path)
+sys.path.append(str(Path(__file__).parent))
+
+from data_prep.prepare_split import split_train_test
+
+path = f"{Path(__file__).parent}\data\preprocessed_data"
+split_train_test(path)

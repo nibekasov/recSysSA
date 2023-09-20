@@ -1,16 +1,19 @@
+from pathlib import Path
+import sys
+sys.path.append(str(Path(__file__).parent))
+
 import pandas as pd
-
-from airflow.dags.scripts.models.lfm import LFMModel
-# from models.ranker import Ranker
-# from utils.utils import read_parquet_from_gdrive
-
 import logging
+
 logging.basicConfig()
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+from models.lfm import LFMModel
+from models.ranker import Ranker
 
-df = pd.read_parquet(r"airflow/dags/scripts/data\preprocessed_data\interactions.parquet", engine='pyarrow')
+path = f"{Path(__file__).parent}\data\preprocessed_data\interactions.parquet"
+df = pd.read_parquet(path, engine='pyarrow')
 def train_lfm(data_path: str = None) -> None:
     """
     trains model for a given data with interactions
