@@ -1,15 +1,9 @@
-import logging
+import os
 
 from airflow.operators.python import PythonOperator
 from airflow import DAG
 from datetime import datetime, timedelta
-from scripts.data_prep.prepare_split import split_train_test
-import os
 
-
-def SPLIT():
-    data_path = f'{os.path.abspath(os.path.dirname(__file__))}/scripts/data/preprocessed_data/interactions.parquet'
-    split_train_test(data_path)
 
 
 

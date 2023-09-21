@@ -1,10 +1,11 @@
 import pandas as pd
 import datetime as dt
+import os
 import logging
+
 logging.basicConfig()
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-import os
 
 def split_train_test(data_path) -> None:
     logging.info(f"Loading data for split...")
@@ -31,7 +32,7 @@ def split_train_test(data_path) -> None:
     local_test = global_train[pd.to_datetime(global_train['timestamp_event_time']) >= local_train_thresh]
 
     local_test = local_test.loc[local_test['user_id'].isin(local_train['user_id'].unique())]
-    logging.info(f"Localt test shape = {global_test.shape}")
+    logging.info(f"Local test shape = {local_test.shape}")
 
     logging.info("Saving splitted data...")
 

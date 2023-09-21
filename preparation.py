@@ -1,9 +1,8 @@
 from pathlib import Path
 import sys
 
-sys.path.append(str(Path(__file__).parent))
-
-from data_prep.data_preprocessing import \
+# sys.path.append(str(Path(__file__).parent))
+from airflow.dags.scripts.data_prep.data_preprocessing import \
     load_csv_from_path \
     ,rename_columns \
     ,sampling \
