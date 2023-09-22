@@ -27,9 +27,9 @@ def get_recommendations(user_id: str, top_k: int = 20):
         return output
 
 
-user_id = '283725137902134437008251670019063891876'
-result = get_recommendations(user_id)
-print(result)
+# user_id = '283725137902134437008251670019063891876'
+# result = get_recommendations(user_id)
+# print(result)
 
 # users_data = pd.read_parquet(r"\\wsl$\Ubuntu\home\recSysSA-main\data\preprocessed_data\interactions_local_train.parquet")
 # random_user_id = np.random.choice(users_data['user_id'].unique(), 1)[0]
