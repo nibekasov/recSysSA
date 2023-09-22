@@ -1,0 +1,27 @@
+<style>
+  body {
+    background-image: url("https://wallpapers-hub.art/wallpaper-images/32055.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+</style>
+<body style="font-family: 'Brush Script MT', cursive; font-size:80%">
+
+<table>
+  <thead>
+    <tr>
+      <th style="font-size: 26px;">Rank</th>
+      <th style="font-size: 26px;">Item id</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {% for key, value in result.items() %}
+   <tr>
+       <td style="font-size: 26px;"> {{ value }} </td>
+       <td style="font-size: 26px;"> {{ key }} </td>
+   </tr>
+  {% endfor %}
+  </tbody>
+</table>
