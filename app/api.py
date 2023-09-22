@@ -19,12 +19,13 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        # Dummy user validation
-        if username == 'admin' and password == 'password':
-            session['username'] = username
-            return redirect(url_for('home'))
-        else:
-            return render_template('login.html')
+        return access_param(username)
+        # # Dummy user validation
+        # if username == 'admin' and password == 'password':
+        #     session['username'] = username
+        #     return redirect(url_for('home'))
+        # else:
+        #     return render_template('login.html')
     else:
         return render_template('login.html')
 
@@ -35,8 +36,8 @@ def logout():
 
 
 @app.route('/index')
-def access_param():
-    id = request.args.get('id')
+def access_param(id):
+    # id = request.args.get('id')
     # '99509958336271854753464934769683843557'
     responce = get_recommendations(id)
     return json.dumps(responce)
