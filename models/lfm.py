@@ -4,6 +4,9 @@ sys.path.append(str(Path(__file__).parent))
 
 from utils.utils import load_model, save_model
 
+
+
+
 import logging
 
 import numpy as np
@@ -13,15 +16,26 @@ from lightfm.data import Dataset
 
 
 from configs.config import settings
-# from utils.utils import load_model, save_model
+from utils.utils import load_model, save_model
+
+# import dill
+# def save_model(model: object, path: str):
+#     with open(f"{path}", "wb") as obj_path:
+#         dill.dump(model, obj_path)
+#
+#
+# def load_model(path: str):
+#     with open(path, "rb") as obj_file:
+#         obj = dill.load(obj_file)
+#     return obj
 
 
 class LFMModel:
     def __init__(self, is_infer=True):
         if is_infer:
-            logging.info("loading candidates model")
-            self.lfm_model = load_model(r'C:\Users\qwerty\Documents\GitHub\recSysSoA\artefacts\lfm_model.dill')
-            self.mapper = load_model(r'C:\Users\qwerty\Documents\GitHub\recSysSoA\artefacts\lfm_mapper.dill').mapping()
+            logging.info("loading candidates for the model...")
+            self.lfm_model = load_model(r"artefacts\lfm_model.dill")
+            self.mapper = load_model(r"artefacts\lfm_mapper.dill").mapping()
 
         else:
             pass
@@ -51,7 +65,10 @@ class LFMModel:
         )
 
         # save mappers
-        save_model(dataset, settings.LFM_TRAIN_PARAMS.MAPPER_PATH)
+        save_model(
+            model=dataset,
+            file_name=settings.LFM_TRAIN_PARAMS.MAPPER_PATH
+        )
 
         # init model
 
@@ -98,4 +115,4 @@ class LFMModel:
 
 
 # m = LFMModel()
-# print(m.infer('99509958336271854753464934769683843557'))
+# print(m.infer('180809344862945720015299585164694667846'))

@@ -1,29 +1,30 @@
 import pandas as pd
 import datetime as dt
-import os
 import logging
 
-logging.basicConfig()
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+from configs.config import settings
+from utils.utils import read_parquet, rm_parquet, save_parquet
 
-
-def split_train_test(data_path) -> None:
+def split_train_test() -> None:
     logging.info(f"Loading data for split...")
 
-    interactions = pd.read_parquet(f'{data_path}\interactions.parquet')
+    interactions = read_parquet(
+        file_folder=settings.DATA_FOLDERS.PREPROCESSED_DATA_FOLDER,
+        file_name=settings.DATA_FILES_P.INTERACTIONS_FILE
+    )
+
     # set dates params for filter
-    MAX_DATE = pd.to_datetime(interactions['timestamp_event_time'].max())
-    MIN_DATE = pd.to_datetime(interactions['timestamp_event_time'].min())
-    TEST_INTERVAL_DAYS = 7
+    max_date = pd.to_datetime(interactions['timestamp_event_time'].max())
+    min_date = pd.to_datetime(interactions['timestamp_event_time'].min())
+    test_interval_days = settings.SPLIT_PAR.TEST_INTERVAL_DAYS
 
 
-    TEST_MAX_DATE = MAX_DATE - dt.timedelta(days=TEST_INTERVAL_DAYS)
-    logging.info(f"test max date = {TEST_MAX_DATE}")
+    test_max_date = max_date - dt.timedelta(days=test_interval_days)
+    logging.info(f"test max date = {test_max_date}")
 
 
-    global_train = interactions.loc[pd.to_datetime(interactions['timestamp_event_time']) < TEST_MAX_DATE]
-    global_test = interactions.loc[pd.to_datetime(interactions['timestamp_event_time']) >= TEST_MAX_DATE]
+    global_train = interactions.loc[pd.to_datetime(interactions['timestamp_event_time']) < test_max_date]
+    global_test = interactions.loc[pd.to_datetime(interactions['timestamp_event_time']) >= test_max_date]
     logging.info(f"Global test shape = {global_test.shape}")
 
 
@@ -37,14 +38,15 @@ def split_train_test(data_path) -> None:
 
     logging.info("Saving splitted data...")
 
+    folder = settings.DATA_FOLDERS.SPLITTED_DATA_FOLDER
     try:
-        os.remove(data_path + r"\interactions_local_train.parquet")
-        os.remove(data_path + r"\interactions_local_test.parquet")
-        os.remove(data_path + r"\interactions_global_test.parquet")
+        rm_parquet(file_folder=folder, file_name=settings.DATA_SPLIT_P.INTERACTIONS_LOCAL_TEST)
+        rm_parquet(file_folder=folder, file_name=settings.DATA_SPLIT_P.INTERACTIONS_LOCAL_TRAIN)
+        rm_parquet(file_folder=folder, file_name=settings.DATA_SPLIT_P.INTERACTIONS_GLOBAL_TEST)
     except OSError:
-        local_train.to_parquet(data_path + r"\interactions_local_train.parquet")
-        local_test.to_parquet(data_path + r"\interactions_local_test.parquet")
-        global_test.to_parquet(data_path + r"\interactions_global_test.parquet")
+        save_parquet(data=local_train, file_folder=folder, file_name=settings.DATA_SPLIT_P.INTERACTIONS_LOCAL_TRAIN)
+        save_parquet(data=local_test, file_folder=folder, file_name=settings.DATA_SPLIT_P.INTERACTIONS_LOCAL_TEST)
+        save_parquet(data=global_test, file_folder=folder, file_name=settings.DATA_SPLIT_P.INTERACTIONS_GLOBAL_TEST)
 
     logging.info("Split is performed!")
 

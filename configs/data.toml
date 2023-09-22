@@ -1,0 +1,17 @@
+[DATA_FOLDERS]
+#INITIAL_DATA_FOLDER = "/data/initial_data/"
+PREPROCESSED_DATA_FOLDER = "/data/preprocessed_data/"
+SPLITTED_DATA_FOLDER = "/data/preprocessed_data/"
+#ARTEFACTS_DATA_FOLDER = "/artefacts/data/"
+
+[DATA_FILES_P]
+INTERACTIONS_FILE = "interactions.parquet"
+#MOVIES_METADATA_FILE = "movies_metadata.parquet"
+
+[DATA_SPLIT_P]
+INTERACTIONS_LOCAL_TRAIN = "interactions_local_train.parquet"
+INTERACTIONS_LOCAL_TEST = "interactions_local_test.parquet"
+INTERACTIONS_GLOBAL_TEST = "interactions_global_test.parquet"
+
+#[DATA_FILES_G]
+#USERS_METADATA_FILE = "users_metadata.parquet"

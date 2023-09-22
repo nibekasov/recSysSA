@@ -18,4 +18,4 @@ LEARNING_RATE = 0.1
 DEPTH = 6
 RANDOM_STATE = 1234
 VERBOSE = '@bool True'
-MODEL_PATH = "artefacts/catboost_clf.cbm"
+MODEL_PATH = "/artefacts/catboost_clf.cbm"

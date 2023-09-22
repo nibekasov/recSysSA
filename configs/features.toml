@@ -1,0 +1,32 @@
+#[INITIAL_FEATURES]
+#INTERACTIONS = [ "year", "month", "day", "user_id", "movie_id", "watch_duration_minutes",]
+#MOVIES_METADATA = [ "movie_id", "title", "entity_type", "genres", "actors", "director", "country", "release_world", "age_rating", "duration",]
+#
+#[PREPROCESSED_FEATURES]
+#INTERACTIONS = [ "watched_pct", "datetime", "watched_pct_cumsum", "watch_duration_minutes_cumsum",]
+#MOVIES_METADATA = [ "Bosnija-Gertsegovina", "Albanija", "Puerto Riko", "Brazilija", "Interv'ju", "Anime", "Slovenija", "Lihtenshtejn", "Serija", "Ruanda", "year_cat_release_world_1930s", "Chehija", "Islandija", "Fil'm", "Prezentatsii", "Zimbabve", "Kajmanovy ostrova", "watch_duration_minutes_mean_by_movie_id", "Iran", "Mul'tfil'my", "Chili", "year_cat_release_world_1920s", "Rejun'on", "Pakistan", "SShA", "year_release_world", "year_cat_release_world_1980s", "Istoricheskoe", "Voennoe", "Aruba", "year_cat_release_world_1900s", "0.0", "Butan", "Litva", "Uganda", "popularity_country", "year_cat_release_world_2020s", "Ostrov Men", "Danija", "main_country", "Puteshestvija", "Kenija", "Jugoslavija (FR)", "Liberija", "Serial", "JuAR", "Tailand", "year_cat_release_world_2000s", "main_genres", "year_cat_release_world_1910s", "Latvija", "Peru", "Shvejtsarija", "Ukraina", "Bolgarija", "Kipr", "Irlandija", "Nigerija", "Gvadelupa", "Komedii", "Katar", "Marokko", "OAE", "Dramy", "TV-shou", "Germanija (FRG)", "Kamerun", "Tadzhikistan", "Serija mnogoserijnogo fil'ma", "Kirgizija", "Biografii", "Alzhir", "year_cat_release_world", "Panama", "Priroda", "Kursy", "Fentezi", "Viktorina", "V'etnam", "Indonezija", "Avstralija", "Vesterny", "year_cat_release_world_Unknown_release_world", "Boeviki", "Kontserty", "Mul'tfil'm", "for_adults", "year_cat_release_world_1950s", "Kongo", "Semejnoe", "Koreja Juzhnaja", "Sejshel'skie ostrova", "Rossija", "SSSR", "Malajzija", "Tanzanija", "Blogi", "Sezon", "Arthaus", "Argentina", "Azerbajdzhan", "Botsvana", "Trillery", "Rumynija", "Germanija (GDR)", "Uzbekistan", "Shou", "Mal'ta", "Bagamy", "Vatikan", "Norvegija", "for_kids", "Muzykal'noe", "Novaja Zelandija", "Uzhasy", "Sport", "Dominikana", "year_cat_release_world_1990s", "Finljandija", "Lektsii", "Italija", "Japonija", "Tunis", "Shvetsija", "Fitnes", "Bahrejn", "Melodramy", "Detektivy", "Saudovskaja Aravija", "Singapur", "Shri-Lanka", "Dokumental'noe", "Koreja Severnaja", "Fantastika", "Chernogorija", "Estonija", "main_director", "Germanija", "Namibija", "Konferentsii", "Paragvaj", "Bel'gija", "year_cat_release_world_2010s", "Abhazija", "Prikljuchenija", "Zambija", "Sovetskoe", "Avstrija", "Kuba", "Gruzija", "Kriminal'noe", "Afganistan", "Slovakija", "year_cat_release_world_1970s", "12.0", "Chehoslovakija", "Gretsija", "main_actors", "Pol'sha", "Portugalija", "Teatr", "Velikobritanija", "Kazahstan", "Kyrgyzstan", "Monako", "Turtsija", "Indija", "Vengrija", "Iskusstvo", "16.0", "Niderlandy", "Urugvaj", "Horvatija", "Makedonija", "Senegal", "Filippiny", "Frantsija", "Tajvan'", "year_cat_release_world_1960s", "6.0", "Armenija", "Belorussija", "Ljuksemburg", "Serbija", "Gonkong", "Karaoke", "Izrail'", "Kambodzha", "year_cat_release_world_1940s", "Kanada", "Kolumbija", "Papua - Novaja Gvineja", "Egipet", "Livan", "Korotkij metr", "Videoobzor", "Meksika", "Venesuela", "Fil'my dlja detej", "Kitaj", "Ispanija", "movie_meta_emb", "movie_cast_emb",]
+#USER_METADATA = [ "fav_actors", "fav_director", "fav_genres", "fav_country", "kids_flg",]
+#
+[FEATURES]
+USER_IDS = "user_id"
+ITEM_IDS = "item_id"
+TARGET = ["target"]
+
+#
+#[MOVIES_FEATURES]
+#MOVIE_IDS = "movie_id"
+#LIST_MOVIE_FEATURES = [ "actors", "director", "genres", "country",]
+#
+#[RANKER_DATA]
+#NEG_FRAC = 0.2
+#RANDOM_STATE = 42
+#
+[RANKER_PREPROCESS_FEATURES]
+ID_COLS = ['user_id', 'item_id']
+TARGET = ["target"]
+CATEGORICAL_COLS = ['platform', 'event_type']
+DROP_COLS = [
+    'utc_event_time', 'utc_event_date', 'id', 'year', 'month', 'day',
+    'timestamp_event_time', 'lag_event_timestamp', 'is_first_event',
+    'timestamp_first_event', 'session_id', 'session_duration'
+]
