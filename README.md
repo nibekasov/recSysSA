@@ -45,8 +45,8 @@ Data preprocessing: To begin the work, data pre-processing was performed. This s
 
 The following steps were carried out to build the recommendation models:
 
-* Training the two models using a training script (treyne dot pai).
-* Performing inference for the first model according to the inference file.
+* Training the two models using a training script (train.py).
+* Performing inference for the first model according to the inference.py
 * Exploratory data analysis
 
 An exploratory data analysis was performed to better understand the characteristics of the original data. 
@@ -72,10 +72,11 @@ The following steps are required to start the project:
 
 
 
-* Run the data preprocessing script (process.py).
-* Run the script for model training (traine.py).
-* Run the API script to get recommendations.
-Note: To get recommendations, you need to add a backslash in the address, log in, and go to the recommendations page. 
+* Run the data preprocessing script (preprocessing.py).
+* Run the script for data split (train and test sets for two-stage model, split.py)
+* Run the script for model training (train.py).
+* Run the API script to get recommendations (api.py).
+Note: To get recommendations, you need to add a backslash in the address, \login, and go to the recommendations page. 
 
 Conclusion
 
