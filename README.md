@@ -39,8 +39,8 @@ In this report, we present an overview of the work done and the results that wer
 
 Data preprocessing: To begin the work, data pre-processing was performed. This step included:
 
-* Running the data preprocessing script (point pai process).
-* Splitting the data into training and test samples using the split script (split point pai).
+* Running the data preprocessing script (process.py).
+* Splitting the data into training and test samples using the split script (split.py).
 * Model training
 
 The following steps were carried out to build the recommendation models:
