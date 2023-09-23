@@ -37,43 +37,44 @@ Current results:
 
 In this report, we present an overview of the work done and the results that were achieved.
 
-Data preprocessing
+Data preprocessing: To begin the work, data pre-processing was performed. This step included:
 
-To begin the work, data pre-processing was performed. This step included:
-
-Running the data preprocessing script (point pai process).
-Splitting the data into training and test samples using the split script (split point pai).
-Model training
+* Running the data preprocessing script (point pai process).
+* Splitting the data into training and test samples using the split script (split point pai).
+* Model training
 
 The following steps were carried out to build the recommendation models:
 
-Training the two models using a training script (treyne dot pai).
-Performing inference for the first model according to the inference file.
-Exploratory data analysis
+* Training the two models using a training script (treyne dot pai).
+* Performing inference for the first model according to the inference file.
+* Exploratory data analysis
 
-An exploratory data analysis was performed to better understand the characteristics of the original data. This analysis identified key features that can be used to improve the recommendations.
+An exploratory data analysis was performed to better understand the characteristics of the original data. 
+* This analysis identified key features that can be used to improve the recommendations.
 
 Baseline model
 
-A baseline model was created to compare with the developed models to serve as a starting point for performance evaluation.
+* A baseline model was created to compare with the developed models to serve as a starting point for performance evaluation.
 
 What remains to be done
 
 Many tasks were accomplished during the project, but the following tasks remain:
 
-Retraining the models to improve recommendation accuracy.
-Containerizing the project to simplify deployment and scaling.
-Implementing metrics to evaluate model performance.
-Developing a second model to compare and select the best model.
+* Retraining the models to improve recommendation accuracy.
+* Containerizing the project to simplify deployment and scaling.
+* Implementing metrics to evaluate model performance.
+* Developing a second model to compare and select the best model.
+
+
 Project Launch
 
 The following steps are required to start the project:
 
 
 
-Run the data preprocessing script (process.py).
-Run the script for model training (traine.py).
-Run the API script to get recommendations.
+* Run the data preprocessing script (process.py).
+* Run the script for model training (traine.py).
+* Run the API script to get recommendations.
 Note: To get recommendations, you need to add a backslash in the address, log in, and go to the recommendations page. 
 
 Conclusion
